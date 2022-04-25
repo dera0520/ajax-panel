@@ -148,7 +148,7 @@ class AjaxCtrl extends MetricsPanelCtrl {
 
   getCurrentParams(scopedVars?: any) {
     let params = {};
-    if (this.paramsFn) {
+    if (this.paramsFn && this.range) {
       params = this.paramsFn(this);
     }
     // if(false) {
@@ -350,6 +350,7 @@ class AjaxCtrl extends MetricsPanelCtrl {
   }
 
   onPanelInitalized() {
+    this.updateTimeRange();
     this.updateFN();
     this.updateTemplate();
     $(window).on(
